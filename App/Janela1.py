@@ -19,7 +19,7 @@ class Application(tk.Frame):
         self.hi_there["text"] = "Hello World\n(click me)\nAdicione1"
         self.hi_there["command"] = say_hi
         self.hi_there.pack(side="top")
-        self.quit.pack(side="bottom")
+self.quit.pack(side="bottom")
 
 
 root = tk.Tk()
