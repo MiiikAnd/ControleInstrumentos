@@ -1,33 +1,18 @@
-def ler(nome_arquivo):
+def encontrar(nome_arquivo, codigoaserprocurado):
     arquivo = open(nome_arquivo, 'r')
-    texto = arquivo.read()
-    print(texto)
-    arquivo.close()
-
-
-def tabela(nome_arquivo):
-    arquivo = open(nome_arquivo, 'r')
-    codigo = arquivo.read()
-    codigo = codigo.split('\n')
-    print(codigo)
-
-
-def encontrar(nome_arquivo, item, item2):
-    arquivo = open(nome_arquivo, 'r')
-    codigo = arquivo.read()
-    codigo = codigo.split('\n')
-    print(codigo)
-    print(codigo[item])
-    a = item2
-    if a == codigo[item]:
-        print(item)
+    tabela = arquivo.read()
+    tabela = tabela.split(';')
+    print(tabela)
+    print(codigoaserprocurado == tabela[1])
+    if codigoaserprocurado in tabela:
+        localiza = list.index(tabela, codigoaserprocurado, 1, list.__len__(tabela))
+        print(tabela[localiza] + '\n' + tabela[localiza + 1] +
+              '\n' + tabela[localiza + 2] + '\n' + tabela[
+            localiza + 3] + '\n' + tabela[localiza + 4])
     else:
-        a == codigo[item+1]
-        print(item)
-    arquivo.close()
+        print('Código inexistente')
 
 
 if __name__ == '__main__':
-    item = 3
-    item2 = '6.1.001.002.024;1'
-    encontrar('status.txt', int(item), item2)
+    codigo = '6.1.001.001.027'
+    encontrar('status.txt', codigo)
