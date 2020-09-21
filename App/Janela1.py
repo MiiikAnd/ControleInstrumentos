@@ -1,6 +1,5 @@
 import tkinter as tk
 
-
 def say_hi():
     print("hi there, everyone!")
 
@@ -9,6 +8,7 @@ class Application(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.hi_there = tk.Button(self)
+        self.hi_there2 = tk.Button(self)
         self.quit = tk.Button(self, text="QUIT", fg="red",
                               command=self.master.destroy)
         self.master = master
@@ -16,10 +16,13 @@ class Application(tk.Frame):
         self.create_widgets()
 
     def create_widgets(self):
-        self.hi_there["text"] = "Hello World\n(click me)\nAdicione1"
+        self.hi_there["text"] = "Buscar"
         self.hi_there["command"] = say_hi
         self.hi_there.pack(side="top")
-self.quit.pack(side="bottom")
+        self.hi_there2["text"] = "Apagar"
+        self.hi_there2["command"] = say_hi
+        self.hi_there2.pack(side="right")
+        self.quit.pack(side="bottom")
 
 
 root = tk.Tk()
