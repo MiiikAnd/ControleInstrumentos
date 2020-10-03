@@ -4,7 +4,7 @@ def encontrar(nome_arquivo, codigoaserprocurado):
     tabela = tabela.split(';')
     if codigoaserprocurado in tabela:
         localiza = list.index(tabela, codigoaserprocurado, 1, list.__len__(tabela))
-        descricao = tabela[localiza +1]
+        descricao = tabela[localiza + 1]
         return descricao
     else:
         print('Código inexistente')
