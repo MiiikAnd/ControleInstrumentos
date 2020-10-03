@@ -11,10 +11,8 @@ def novo_cadastro(codigo, status, usuario, arquivo, arquivostatus):
     escrita.close()
     substituto = open(arquivostatus, 'r')
     textooriginal = substituto.read()
-    print(textooriginal)
     a = textooriginal.find(codigo,0)
     novostatus = textooriginal.replace(codigo + textooriginal[a+15:a+50], codigo + ";" + status + ";" + usuario + ";" + str(agora) + ";")
-    print(novostatus)
     substituir = open(arquivostatus, 'w')
     substituir.write(novostatus)
     substituto.close()
@@ -22,4 +20,4 @@ def novo_cadastro(codigo, status, usuario, arquivo, arquivostatus):
 
 
 if __name__ == '__main__':
-    novo_cadastro("6.1.001.002.024", "U", "2025", bancodados, statusinstr)
+    novo_cadastro("6.1.001.001.027", "D", "2025", bancodados, statusinstr)
