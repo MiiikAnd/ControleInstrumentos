@@ -58,6 +58,9 @@ class Application(tk.Frame):
         saidadigitada = self.textoentradasaida.get(1.0, 1.1)
         redigitado = self.textore.get(1.0, 1.4)
         novo_cadastro(codigodigitado, saidadigitada, redigitado, bancodados, statusinstr)
+        self.textore.delete(1.0, 2.0)
+        self.codigo_produto.delete(1.0, 2.0)
+        self.textoentradasaida.delete(1.0, 2.0)
         print(codigodigitado)
 
 
