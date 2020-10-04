@@ -31,6 +31,7 @@ class Application(tk.Frame):
         self.labelcodigo = tk.Label(self)
         self.labelentradasaida = tk.Label(self)
         self.labelre = tk.Label(self)
+        self.labeladdicionecodigo = tk.Label(self)
         self.quit = tk.Button(self, text="Fechar", fg="red",
                               command=self.master.destroy)
         self.master = master
@@ -48,7 +49,9 @@ class Application(tk.Frame):
         self.labelentradasaida["text"] = "Entrada / Saída ?"
         self.labelentradasaida.grid(row=1, column=0, pady=22)
         self.labelre["text"] = "R.E. do Colaborador"
+        self.labeladdicionecodigo["text"] = "Adicione o código"
         self.labelre.grid(row=2, column=0, pady=22)
+        self.labeladdicionecodigo.grid(row=8, column=2)
         self.saidainstr.grid(row=10, column=0, pady=22)
         self.quit.grid(row=10, column=2)
 
@@ -61,6 +64,7 @@ class Application(tk.Frame):
         self.textore.delete(1.0, 2.0)
         self.codigo_produto.delete(1.0, 2.0)
         self.textoentradasaida.delete(1.0, 2.0)
+        self.labeladdicionecodigo["text"] = "Saída de instrumento realizada!"
         print(codigodigitado)
 
 
