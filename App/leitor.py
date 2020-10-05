@@ -14,5 +14,5 @@ def encontrar(nome_arquivo, codigoaserprocurado):
 
 
 if __name__ == '__main__':
-    codigo = '6.1.001.001.099'
-    encontrar('status.txt', codigo)
+    codigo = '6.1.001.001.027'
+    encontrar('Instrumentos.txt', codigo)
