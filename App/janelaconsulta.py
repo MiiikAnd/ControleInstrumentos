@@ -1,14 +1,14 @@
 import tkinter as tk
 
 bancodados = "bancodados.txt"
-statusinstr = "status2.txt"
+statusinstr = "status.txt"
 descricaoinstr = "Instrumentos.txt"
 
 
 class Application(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
-        self.codigo_produto = tk.Text(self, width=20, height=1)  # Caixa de texto para digitar
+        self.codigo_produto = tk.Text(self, width=20, height=2)  # Caixa de texto para digitar
         self.botaoconsulta = tk.Button(self)
         self.labelcabecalhodescr = tk.Label(self)
         self.labelcabecalhost = tk.Label(self)
@@ -18,6 +18,7 @@ class Application(tk.Frame):
         self.labelstatus = tk.Label(self)
         self.labelre = tk.Label(self)
         self.labeldata = tk.Label(self)
+        self.labelcodigo = tk.Label(self)
         self.quit = tk.Button(self, text="Fechar", fg="red",
                               command=self.master.destroy)
         self.master = master
@@ -44,6 +45,8 @@ class Application(tk.Frame):
         self.labelcabecalhodata.grid(row=2, column=4, pady=20)
         self.labeldata["text"] = ""
         self.labeldata.grid(row=3, column=4, pady=20)
+        self.labelcodigo["text"] = ""
+        self.labelcodigo.grid(row=4, column=0, pady=20)
         self.botaoconsulta.grid(row=10, column=0, pady=22)
         self.quit.grid(row=10, column=2)
 
@@ -67,10 +70,11 @@ class Application(tk.Frame):
         self.labelstatus["text"] = status
         self.labelre["text"] = re
         self.labeldata["text"] = data
+        self.labelcodigo["text"] = codigodigitado
 
 
 root = tk.Tk()
 root.title('Controle de instrumentos')
-root.geometry("800x300")
+root.geometry("800x400")
 app = Application(master=root)
 app.mainloop()

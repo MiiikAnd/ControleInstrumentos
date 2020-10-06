@@ -2,7 +2,7 @@ import tkinter as tk
 from datetime import datetime
 
 bancodados = "bancodados.txt"
-statusinstr = "status2.txt"
+statusinstr = "status.txt"
 agora = datetime.now()
 
 
@@ -13,7 +13,7 @@ def novo_cadastro(codigo, status, usuario, arquivo, arquivostatus):
     substituto = open(arquivostatus, 'r')
     textooriginal = substituto.read()
     a = textooriginal.find(codigo, 0)
-    novostatus = textooriginal.replace(codigo + textooriginal[a + 15:a + 50],
+    novostatus = textooriginal.replace(codigo + textooriginal[a + 15:a + 54],
                                        codigo + ";" + status + ";" + usuario + ";" + str(agora) + ";")
     substituir = open(arquivostatus, 'w')
     substituir.write(novostatus)
@@ -24,9 +24,9 @@ def novo_cadastro(codigo, status, usuario, arquivo, arquivostatus):
 class Application(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
-        self.codigo_produto = tk.Text(self, width=20, height=1)  # Caixa de texto para digitar
-        self.textoentradasaida = tk.Text(self, width=2, height=1)
-        self.textore = tk.Text(self, width=9, height=1)
+        self.codigo_produto = tk.Text(self, width=20, height=2)  # Caixa de texto para digitar
+        self.textoentradasaida = tk.Text(self, width=2, height=2)
+        self.textore = tk.Text(self, width=9, height=2)
         self.saidainstr = tk.Button(self)
         self.digitado = tk.Label(self)
         self.labelcodigo = tk.Label(self)
@@ -65,7 +65,7 @@ class Application(tk.Frame):
         self.textore.delete(1.0, 2.0)
         self.codigo_produto.delete(1.0, 2.0)
         self.textoentradasaida.delete(1.0, 2.0)
-        self.labeladdicionecodigo["text"] = "Saída de instrumento realizada!"
+        self.labeladdicionecodigo["text"] = "Saída de instrumento " + codigodigitado + " realizada!"
         print(codigodigitado)
 
 
