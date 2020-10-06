@@ -5,19 +5,20 @@ bancodados = "bancodados.txt"
 statusinstr = "status2.txt"
 agora = datetime.now()
 
+
 def novo_cadastro(codigo, status, usuario, arquivo, arquivostatus):
     escrita = open(arquivo, 'a')
     escrita.write(codigo + ";" + status + ";" + usuario + ";" + str(agora) + ";" + "\n")
     escrita.close()
     substituto = open(arquivostatus, 'r')
     textooriginal = substituto.read()
-    a = textooriginal.find(codigo,0)
-    novostatus = textooriginal.replace(codigo + textooriginal[a+15:a+50], codigo + ";" + status + ";" + usuario + ";" + str(agora) + ";")
+    a = textooriginal.find(codigo, 0)
+    novostatus = textooriginal.replace(codigo + textooriginal[a + 15:a + 50],
+                                       codigo + ";" + status + ";" + usuario + ";" + str(agora) + ";")
     substituir = open(arquivostatus, 'w')
     substituir.write(novostatus)
     substituto.close()
     substituir.close()
-
 
 
 class Application(tk.Frame):
@@ -25,7 +26,7 @@ class Application(tk.Frame):
         super().__init__(master)
         self.codigo_produto = tk.Text(self, width=20, height=1)  # Caixa de texto para digitar
         self.textoentradasaida = tk.Text(self, width=2, height=1)
-        self.textore = tk.Text(self, width=5, height=1)
+        self.textore = tk.Text(self, width=9, height=1)
         self.saidainstr = tk.Button(self)
         self.digitado = tk.Label(self)
         self.labelcodigo = tk.Label(self)
@@ -59,7 +60,7 @@ class Application(tk.Frame):
         self.digitado.config(text=self.codigo_produto.get(1.0, 1.15))
         codigodigitado = self.codigo_produto.get(1.0, 1.15)
         saidadigitada = self.textoentradasaida.get(1.0, 1.1)
-        redigitado = self.textore.get(1.0, 1.4)
+        redigitado = self.textore.get(1.0, 1.8)
         novo_cadastro(codigodigitado, saidadigitada, redigitado, bancodados, statusinstr)
         self.textore.delete(1.0, 2.0)
         self.codigo_produto.delete(1.0, 2.0)

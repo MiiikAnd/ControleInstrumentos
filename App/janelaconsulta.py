@@ -3,21 +3,6 @@ import tkinter as tk
 bancodados = "bancodados.txt"
 statusinstr = "status2.txt"
 descricaoinstr = "Instrumentos.txt"
-descricao = "aaaa"
-
-def encontrar(nome_arquivo, codigoaserprocurado):
-    arquivo = open(nome_arquivo, 'r')
-    tabela = arquivo.read()
-    tabela = tabela.split(';')
-    arquivo.close()
-    print(tabela)
-    print(codigoaserprocurado == tabela[1])
-    if codigoaserprocurado in tabela:
-        localiza = list.index(tabela, codigoaserprocurado, 1, list.__len__(tabela))
-        descricao = tabela[localiza + 1]
-    else:
-        descricao = "Código não existe"
-        print('Código inexistente')
 
 
 class Application(tk.Frame):
@@ -42,7 +27,7 @@ class Application(tk.Frame):
     def create_widgets(self):
         self.botaoconsulta["text"] = "Consultar"
         self.codigo_produto.grid(row=0, column=1)
-        self.botaoconsulta["command"] = self.saida_instr
+        self.botaoconsulta["command"] = self.consulta_instr
         self.labelcabecalhodescr["text"] = "Descrição"
         self.labelcabecalhodescr.grid(row=2, column=0, pady=20)
         self.labeldescr["text"] = ""
@@ -54,7 +39,7 @@ class Application(tk.Frame):
         self.labelcabecalhore["text"] = "R.E."
         self.labelcabecalhore.grid(row=2, column=3, pady=20)
         self.labelre["text"] = ""
-        self.labelre.grid(row=3, column=3, pady=20)
+        self.labelre.grid(row=3, column=3, pady=40)
         self.labelcabecalhodata["text"] = "Data"
         self.labelcabecalhodata.grid(row=2, column=4, pady=20)
         self.labeldata["text"] = ""
@@ -62,14 +47,26 @@ class Application(tk.Frame):
         self.botaoconsulta.grid(row=10, column=0, pady=22)
         self.quit.grid(row=10, column=2)
 
-    def saida_instr(self):
+    def consulta_instr(self):
         codigodigitado = self.codigo_produto.get(1.0, 1.15)
-        encontrar(descricaoinstr, codigodigitado)
+        arquivodescr = open(descricaoinstr, 'r')
+        tabela = arquivodescr.read()
+        tabela = tabela.split(';')
+        arquivodescr.close()
+        localiza = list.index(tabela, codigodigitado, 1, list.__len__(tabela))
+        descricao = tabela[localiza + 1]
         self.labeldescr["text"] = descricao
-        self.labelstatus["text"] = codigodigitado
-        self.labelre["text"] = codigodigitado
-        self.labeldata["text"] = codigodigitado
-        print(codigodigitado)
+        arquivostatus = open(statusinstr, 'r')
+        tabelastatus = arquivostatus.read()
+        tabelastatus = tabelastatus.split(';')
+        arquivostatus.close()
+        localizastatus = list.index(tabelastatus, codigodigitado, 1, list.__len__(tabelastatus))
+        status = tabelastatus[localizastatus + 1]
+        re = tabelastatus[localizastatus + 2]
+        data = tabelastatus[localizastatus + 3]
+        self.labelstatus["text"] = status
+        self.labelre["text"] = re
+        self.labeldata["text"] = data
 
 
 root = tk.Tk()
