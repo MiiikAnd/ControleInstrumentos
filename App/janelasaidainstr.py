@@ -24,9 +24,9 @@ def novo_cadastro(codigo, status, usuario, arquivo, arquivostatus):
 class Application(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
-        self.codigo_produto = tk.Text(self, width=20, height=2)  # Caixa de texto para digitar
-        self.textoentradasaida = tk.Text(self, width=2, height=2)
-        self.textore = tk.Text(self, width=9, height=2)
+        self.codigo_produto = tk.Entry(self, width=20, justify='center', xscrollcommand=1)  # Caixa de texto para digitar
+        self.textoentradasaida = tk.Entry(self, width=2)
+        self.textore = tk.Entry(self, width=9)
         self.saidainstr = tk.Button(self)
         self.digitado = tk.Label(self)
         self.labelcodigo = tk.Label(self)
@@ -41,7 +41,7 @@ class Application(tk.Frame):
 
     def create_widgets(self):
         self.saidainstr["text"] = "Retirar / Devolver \n instrumento"
-        self.codigo_produto.grid(row=0, column=1)
+        self.codigo_produto.grid(row=0, column=1, ipady=2)
         self.textoentradasaida.grid(row=1, column=1)
         self.textore.grid(row=2, column=1)
         self.saidainstr["command"] = self.saida_instr
@@ -57,14 +57,13 @@ class Application(tk.Frame):
         self.quit.grid(row=10, column=2)
 
     def saida_instr(self):
-        self.digitado.config(text=self.codigo_produto.get(1.0, 1.15))
-        codigodigitado = self.codigo_produto.get(1.0, 1.15)
-        saidadigitada = self.textoentradasaida.get(1.0, 1.1)
-        redigitado = self.textore.get(1.0, 1.8)
+        codigodigitado = self.codigo_produto.get()
+        saidadigitada = self.textoentradasaida.get()
+        redigitado = self.textore.get()
         novo_cadastro(codigodigitado, saidadigitada, redigitado, bancodados, statusinstr)
-        self.textore.delete(1.0, 2.0)
-        self.codigo_produto.delete(1.0, 2.0)
-        self.textoentradasaida.delete(1.0, 2.0)
+        self.textore.delete(0, 999)
+        self.codigo_produto.delete(0, 999)
+        self.textoentradasaida.delete(0, 999)
         self.labeladdicionecodigo["text"] = "Saída de instrumento " + codigodigitado + " realizada!"
         print(codigodigitado)
 
