@@ -3,10 +3,10 @@ from datetime import datetime
 
 bancodados = "bancodados.txt"
 statusinstr = "status.txt"
-agora = datetime.now()
-
+registrofunc = "re.txt"
 
 def novo_cadastro(codigo, status, usuario, arquivo, arquivostatus):
+    agora = datetime.now()
     escrita = open(arquivo, 'a')
     escrita.write(codigo + ";" + status + ";" + usuario + ";" + str(agora) + ";" + "\n")
     escrita.close()
@@ -24,7 +24,8 @@ def novo_cadastro(codigo, status, usuario, arquivo, arquivostatus):
 class Application(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
-        self.codigo_produto = tk.Entry(self, width=20, justify='center', xscrollcommand=1)  # Caixa de texto para digitar
+        self.codigo_produto = tk.Entry(self, width=20, justify='center', xscrollcommand=1)
+        # Caixa de texto para digitar
         self.textoentradasaida = tk.Entry(self, width=2)
         self.textore = tk.Entry(self, width=9)
         self.saidainstr = tk.Button(self)
@@ -60,11 +61,14 @@ class Application(tk.Frame):
         codigodigitado = self.codigo_produto.get()
         saidadigitada = self.textoentradasaida.get()
         redigitado = self.textore.get()
+        colaborador = "Mike"
+        descricaoinstr = "Paquimetro"
         novo_cadastro(codigodigitado, saidadigitada, redigitado, bancodados, statusinstr)
         self.textore.delete(0, 999)
         self.codigo_produto.delete(0, 999)
         self.textoentradasaida.delete(0, 999)
-        self.labeladdicionecodigo["text"] = "Saída de instrumento " + codigodigitado + " realizada!"
+        self.labeladdicionecodigo["text"] = "Saída de instrumento:\n " + codigodigitado + " - " + descricaoinstr + \
+                                            "\n realizada com sucesso! \n Para o colaborador: " + colaborador
         print(codigodigitado)
 
 
