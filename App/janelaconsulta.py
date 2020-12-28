@@ -8,7 +8,7 @@ descricaoinstr = "Instrumentos.txt"
 class Application(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
-        self.codigo_produto = tk.Text(self, width=20, height=2)  # Caixa de texto para digitar
+        self.codigo_produto = tk.Entry(self, width=20)  # Caixa de texto para digitar
         self.botaoconsulta = tk.Button(self)
         self.labelcabecalhodescr = tk.Label(self)
         self.labelcabecalhost = tk.Label(self)
@@ -51,7 +51,7 @@ class Application(tk.Frame):
         self.quit.grid(row=10, column=2)
 
     def consulta_instr(self):
-        codigodigitado = self.codigo_produto.get(1.0, 1.15)
+        codigodigitado = self.codigo_produto.get()
         arquivodescr = open(descricaoinstr, 'r')
         tabela = arquivodescr.read()
         tabela = tabela.split(';')
