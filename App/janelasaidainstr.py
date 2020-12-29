@@ -69,7 +69,11 @@ class Application(tk.Frame):
         self.textoentradasaida.delete(0, 999)
         self.labeladdicionecodigo["text"] = "Saída de instrumento:\n " + codigodigitado + " - " + descricaoinstr + \
                                             "\n realizada com sucesso! \n Para o colaborador: " + colaborador
-        print(codigodigitado)
+
+    def localiza_descricao(self, arquivo, registro):
+        texto = open(arquivo, 'r')
+        
+
 
 
 root = tk.Tk()

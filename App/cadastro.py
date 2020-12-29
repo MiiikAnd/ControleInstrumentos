@@ -15,8 +15,9 @@ class Application(tk.Frame):
         super().__init__(master)
         self.codigo_produto = tk.Entry(self, width=20, justify='center', xscrollcommand=1)
         self.descricaocodigo = tk.Entry(self, width=100)
-        self.reinic = tk.Entry(self, width=2, justify='center', xscrollcommand=1)
-        self.saidainstr = tk.Button(self)
+        self.reinic = tk.Entry(self, width=9, justify='center', xscrollcommand=1)
+        self.statusinic = tk.Entry(self, width=2, justify='center', xscrollcommand=1)
+        self.novoinstrumento = tk.Button(self)
         self.lbcodigo = tk.Label(self)
         self.lbcodigo = tk.Label(self)
         self.lbdescricao = tk.Label(self)
@@ -29,7 +30,7 @@ class Application(tk.Frame):
         self.create_widgets()
 
     def create_widgets(self):
-        self.saidainstr["text"] = "Cadastrar novo\n instrumento"
+        self.novoinstrumento["text"] = "Cadastrar novo\n instrumento"
         self.codigo_produto.grid(row=1, column=0, padx=20)
         self.descricaocodigo.grid(row=1, column=1)
         self.lbcodigo["text"] = "Código do instrumento"
@@ -40,8 +41,9 @@ class Application(tk.Frame):
         self.lbre["text"] = "R.E."
         self.reinic.grid(row=1, column=3, padx=20)
         self.lbstatus.grid(row=0, column=4)
+        self.statusinic .grid(row=1, column=4, padx=20)
         self.lbre.grid(row=0, column=3)
-        self.saidainstr.grid(row=10, column=0, pady=22)
+        self.novoinstrumento.grid(row=10, column=0, pady=22)
         self.quit.grid(row=10, column=2)
 
 
