@@ -72,7 +72,7 @@ class Application(tk.Frame):
 
     def localiza_descricao(self, arquivo, registro):
         texto = open(arquivo, 'r')
-        
+
 
 
 
