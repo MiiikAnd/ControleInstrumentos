@@ -4,11 +4,11 @@ from tkinter import *
 def salvar_produto(codigo, descricao):
     try:
         connection = psycopg2.connect(
-            database="your_database",
-            user="your_username",
-            password="your_password",
-            host="127.0.0.1",
-            port="5432"
+            database="postgres",
+            user="postgres",
+            password="mikemao",
+            host="localhost",
+            port="5433"
         )
         cursor = connection.cursor()
         postgres_insert_query = """ INSERT INTO produtos (codigo, descricao) VALUES (%s,%s)"""

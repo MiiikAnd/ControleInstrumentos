@@ -61,7 +61,7 @@ class Application(tk.Frame):
         codigodigitado = self.codigo_produto.get()
         saidadigitada = self.textoentradasaida.get()
         redigitado = self.textore.get()
-        colaborador = "Mike"
+        colaborador = nomecolab
         descricaoinstr = "Paquimetro"
         novo_cadastro(codigodigitado, saidadigitada, redigitado, bancodados, statusinstr)
         self.textore.delete(0, 999)
@@ -72,7 +72,7 @@ class Application(tk.Frame):
 
     def localiza_descricao(self, arquivo, registro):
         texto = open(arquivo, 'r')
-
+        texto.read()
 
 
 
